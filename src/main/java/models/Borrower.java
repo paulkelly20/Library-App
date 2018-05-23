@@ -1,6 +1,9 @@
 package models;
 
+import db.DBHelper;
+
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,6 +20,7 @@ public class Borrower {
     public Borrower(String name, Library library) {
         this.name = name;
         this.library = library;
+        this.books = new ArrayList<Book>();
     }
 
     @Id
@@ -39,7 +43,8 @@ public class Borrower {
         this.name = name;
     }
 
-    @OneToMany(mappedBy = "borrower")
+    @ManyToOne
+    @JoinColumn(name = "library_id", nullable = false)
     public Library getLibrary() {
         return library;
     }
@@ -48,12 +53,19 @@ public class Borrower {
         this.library = library;
     }
 
-    @OneToMany(mappedBy = "borrower_id")
+    @OneToMany(mappedBy = "borrower")
     public List<Book> getBooks() {
         return books;
     }
 
     public void setBooks(List<Book> books) {
         this.books = books;
+    }
+
+    public void recieveBookFromLibrary(Book book){
+        this.books.add(book);
+        book.setBorrower(this);
+        DBHelper.save(this);
+        DBHelper.save(book);
     }
 }

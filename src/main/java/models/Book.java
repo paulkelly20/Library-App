@@ -51,7 +51,7 @@ public class Book {
     }
 
     @ManyToOne()
-    @JoinColumn(name = "library_id")
+    @JoinColumn(name = "library_id", nullable = true)
     public Library getLibrary() {
         return library;
     }
@@ -61,7 +61,7 @@ public class Book {
     }
 
     @ManyToOne
-    @JoinColumn(name = "borrower_id")
+    @JoinColumn(name = "borrower_id", nullable = true)
     public Borrower getBorrower() {
         return borrower;
     }

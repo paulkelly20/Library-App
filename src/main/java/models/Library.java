@@ -2,6 +2,7 @@ package models;
 
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 @Entity
@@ -17,6 +18,8 @@ public class Library {
 
     public Library(String name) {
         this.name = name;
+        this.books = new ArrayList<Book>();
+        this.borrowers = new ArrayList<Borrower>();
     }
 
     @Id
@@ -55,5 +58,17 @@ public class Library {
 
     public void setBorrowers(List<Borrower> borrowers) {
         this.borrowers = borrowers;
+    }
+
+    public void addBookToLibrary(Book book){
+        this.books.add(book);
+    }
+
+    public void addBorrowerToLibrary(Borrower borrower){
+        this.borrowers.add(borrower);
+    }
+
+    public int bookCounts() {
+         return this.books.size();
     }
 }
