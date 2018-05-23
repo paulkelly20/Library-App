@@ -1,0 +1,23 @@
+<p>Borrowers</p>
+<div>
+    <table>
+        <tr>
+
+            <th>Name</th>
+            <th>Library</th>
+            <th>Books</th>
+
+
+        </tr>
+        #foreach ($borrower in $borrowers)
+        <tr>
+            <td>$borrower.getName()</td>
+            <td>$borrower.getLibrary().getName()</td>
+            <td>$borrower.howManyBooksBorrowerHas()</td>
+
+        </tr>
+        #end
+    </table>
+
+
+</div>
