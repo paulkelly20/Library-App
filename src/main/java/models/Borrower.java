@@ -67,4 +67,8 @@ public class Borrower {
         DBHelper.save(this);
         DBHelper.save(book);
     }
+
+    public int howManyBooksBorrowerHas(){
+        return this.books.size();
+    }
 }
