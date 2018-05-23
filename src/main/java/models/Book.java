@@ -10,7 +10,6 @@ public class Book {
     private String genre;
     private String author;
     private Library library;
-    private Borrower borrower;
 
     public Book() {
     }
@@ -60,13 +59,5 @@ public class Book {
         this.library = library;
     }
 
-    @ManyToOne
-    @JoinColumn(name = "borrower_id", nullable = true)
-    public Borrower getBorrower() {
-        return borrower;
-    }
 
-    public void setBorrower(Borrower borrower) {
-        this.borrower = borrower;
-    }
 }

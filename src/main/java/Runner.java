@@ -38,7 +38,7 @@ public class Runner {
         DBHelper.save(borrower);
         DBHelper.save(borrower2);
 
-        borrower.recieveBookFromLibrary(book);
+        borrower.recieveBookFromLibrary(library.giveBooks(book));
 
 
     }

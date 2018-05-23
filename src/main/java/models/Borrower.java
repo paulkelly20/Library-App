@@ -52,8 +52,8 @@ public class Borrower {
     public void setLibrary(Library library) {
         this.library = library;
     }
-
-    @OneToMany(mappedBy = "borrower")
+    @ElementCollection
+    @CollectionTable
     public List<Book> getBooks() {
         return books;
     }
@@ -64,7 +64,6 @@ public class Borrower {
 
     public void recieveBookFromLibrary(Book book){
         this.books.add(book);
-        book.setBorrower(this);
         DBHelper.save(this);
         DBHelper.save(book);
     }

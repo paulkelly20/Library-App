@@ -71,4 +71,8 @@ public class Library {
     public int bookCounts() {
          return this.books.size();
     }
+
+    public Book giveBooks(Book book){
+       return  this.books.get(0);
+    }
 }
